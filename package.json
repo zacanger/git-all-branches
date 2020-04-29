@@ -1,8 +1,7 @@
 {
-  "name": "ts-cli-boilerplate",
-  "description": "Boilerplate for simple TypeScript command-line tools",
-  "version": "1.1.3",
-  "private": true,
+  "name": "git-all-branches",
+  "description": "Better git branch",
+  "version": "0.0.1",
   "author": {
     "email": "zac@zacanger.com",
     "name": "Zac Anger",
@@ -23,41 +22,36 @@
     "build": "tsc",
     "prebuild": "npm t",
     "preversion": "npm run build",
-    "test": "run-s -s test:ts test:lint test:cover",
-    "test:cover": "nyc npm run test:tape",
+    "test": "run-s -s test:ts test:lint",
     "test:lint": "eslint --ext .ts -c .eslintrc.json src/*.ts",
-    "test:tape": "tape -r ts-node/register src/*.test.ts | tap-spec",
     "test:ts": "tsc --noEmit"
   },
-  "homepage": "https://github.com/zacanger/ts-cli-boilerplate#readme",
+  "homepage": "https://github.com/zacanger/git-all-branches#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zacanger/ts-cli-boilerplate.git"
+    "url": "https://github.com/zacanger/git-all-branches.git"
   },
-  "bugs": "https://github.com/zacanger/ts-cli-boilerplate/issues",
+  "bugs": "https://github.com/zacanger/git-all-branches/issues",
   "keywords": [
-    "boilerplate",
     "cli",
-    "ts",
-    "typescript"
+    "git",
+    "git-branch"
   ],
   "dependencies": {
-    "zeelib": "11.0.12"
+    "zeelib": "11.1.0"
   },
   "devDependencies": {
-    "@types/node": "13.9.3",
-    "@types/tape": "4.2.34",
+    "@types/node": "13.13.4",
     "eslint": "6.8.0",
-    "eslint-plugin-zacanger": "1.1.3",
-    "husky": "4.2.3",
-    "lint-staged": "10.0.8",
+    "eslint-plugin-zacanger": "1.1.5",
+    "husky": "4.2.5",
+    "lint-staged": "10.2.0",
     "npm-run-all": "4.1.5",
-    "nyc": "15.0.0",
-    "prettier": "2.0.1",
-    "sortpack": "2.1.2",
+    "nyc": "15.0.1",
+    "prettier": "2.0.5",
+    "sortpack": "2.1.4",
     "tap-spec": "5.0.0",
-    "tape": "4.13.2",
-    "ts-node": "8.8.1",
+    "ts-node": "8.9.1",
     "typescript": "3.8.3"
   },
   "engines": {
@@ -75,26 +69,5 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "nyc": {
-    "exclude": [
-      "src/*.test.ts"
-    ],
-    "extensions": [
-      "*.ts"
-    ],
-    "include": [
-      "src/*.ts"
-    ],
-    "instrument": true,
-    "reporter": [
-      "text",
-      "html",
-      "json"
-    ],
-    "require": [
-      "ts-node/register"
-    ],
-    "sourceMap": true
   }
 }

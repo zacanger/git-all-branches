@@ -1,19 +1,16 @@
-# ts-cli-boilerplate
+# git-all-branches
 
-Boilerplate for simple TypeScript command-line tools.
+Better `git branch`
 
 [![Support with PayPal](https://img.shields.io/badge/paypal-donate-yellow.png)](https://paypal.me/zacanger) [![Patreon](https://img.shields.io/badge/patreon-donate-yellow.svg)](https://www.patreon.com/zacanger) [![ko-fi](https://img.shields.io/badge/donate-KoFi-yellow.svg)](https://ko-fi.com/U7U2110VB)
 
 --------
 
-## Usage
+## TODO:
 
-* Click the "Use this template button" to create a new repo.
-* Clone your repo
-* `npm ci`
-* Write some code!
-* `npm run build`
-
-Check out the scripts and hooks in package.json for details.
+// display: all branch names, sorted
+// current branch at the bottom with a star next to it
+// other branches: mark whether they only exist locally,
+// only exist on the remote, or exist in both places
 
 [LICENSE](./LICENSE.md)
