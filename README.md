@@ -6,6 +6,16 @@ Better `git branch`
 
 --------
 
+## Usage
+
+```shell
+npm i -g git-all-branches
+git all-branches # or git-all-branches
+# Takes an optional argument, which is the name of a remote.
+# Defaults to `origin`
+git all-branches upstream
+```
+
 ## TODO:
 
 display: all branch names, sorted
@@ -16,8 +26,8 @@ with colors
 
 example output:
 ```
-  chore/foo  (remote only) // yellow
-  feat/bar   (local only)  // red
+  chore/foo  (remote only)      // yellow
+  feat/bar   (local only)       // red
   master     (remote and local) // green
 * fix/baz    (remote and local) // green
 ```
