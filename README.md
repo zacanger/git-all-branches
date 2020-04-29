@@ -8,9 +8,18 @@ Better `git branch`
 
 ## TODO:
 
-// display: all branch names, sorted
-// current branch at the bottom with a star next to it
-// other branches: mark whether they only exist locally,
-// only exist on the remote, or exist in both places
+display: all branch names, sorted
+current branch at the bottom with a star next to it
+other branches: mark whether they only exist locally,
+only exist on the remote, or exist in both places,
+with colors
+
+example output:
+```
+  chore/foo  (remote only) // yellow
+  feat/bar   (local only)  // red
+  master     (remote and local) // green
+* fix/baz    (remote and local) // green
+```
 
 [LICENSE](./LICENSE.md)
