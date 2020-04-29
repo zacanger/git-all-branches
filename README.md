@@ -18,6 +18,6 @@ git all-branches upstream
 
 ## TODO:
 
-Sort current branch to bottom, and show an asterisk next to it.
+Align/pad left branch status
 
 [LICENSE](./LICENSE.md)

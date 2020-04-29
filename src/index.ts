@@ -14,11 +14,9 @@ const cleanUpLists = (s = '') =>
     .map((a) => a.replace(`${remoteName}/`, ''))
     .filter((a) => !a.includes('->'))
 
-/*
 const currentBranch = execSync('git rev-parse --abbrev-ref HEAD')
   .toString()
   .trim()
-*/
 
 const remoteBranches = cleanUpLists(execSync('git branch -r').toString().trim())
 
@@ -42,14 +40,22 @@ const onBoth = allBranches.filter(
   (a: string) => remoteBranches.includes(a) && localBranches.includes(a)
 )
 
-const annotatedBranches = allBranches.map((a: string) =>
-  onlyRemote.includes(a)
-    ? `${yellow}${a} (remote only)${reset}`
-    : onlyLocal.includes(a)
-    ? `${red}${a} (local only)${reset}`
-    : onBoth.includes(a)
-    ? `${green}${a} (remote and local)${reset}`
-    : a
-)
+const annotatedBranches = allBranches.map((a: string) => {
+  let branchString = `  ${a}`
+  if (a === currentBranch) {
+    branchString = `* ${a}`
+  }
+  if (onlyRemote.includes(a)) {
+    branchString = `${yellow}${branchString} (remote)${reset}`
+  }
+  if (onlyLocal.includes(a)) {
+    branchString = `${red}${branchString} (local)${reset}`
+  }
+  if (onBoth.includes(a)) {
+    branchString = `${green}${branchString} (both)${reset}`
+  }
+
+  return branchString
+})
 
 console.log(annotatedBranches.join('\n'))
