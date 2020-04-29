@@ -37,9 +37,7 @@
     "git",
     "git-branch"
   ],
-  "dependencies": {
-    "zeelib": "11.1.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/node": "13.13.4",
     "eslint": "6.8.0",
