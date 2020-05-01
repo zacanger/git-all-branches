@@ -18,8 +18,4 @@ git all-branches # or git-all-branches
 git all-branches upstream
 ```
 
-## TODO:
-
-Align/pad left branch status
-
 [LICENSE](./LICENSE.md)
