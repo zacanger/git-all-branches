@@ -24,7 +24,7 @@ const localBranches = cleanUpLists(
   execSync('git branch').toString().trim().replace('* ', '')
 )
 
-export const uniq = (xs: Array<string>) =>
+export const uniq = (xs: Array<string>): Array<string> =>
   xs.filter((v, i, s) => s.indexOf(v) === i)
 
 const allBranches = uniq(
