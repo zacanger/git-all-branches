@@ -7,55 +7,76 @@ const green = '\u001b[0;32m'
 const yellow = '\u001b[0;33m'
 const red = '\u001b[0;31m'
 
-const cleanUpLists = (s = '') =>
-  s
-    .split('\n')
-    .map((a) => a.trim())
-    .map((a) => a.replace(`${remoteName}/`, ''))
-    .filter((a) => !a.includes('->'))
+const isInGitRepo = () => {
+  try {
+    return (
+      execSync('git rev-parse --is-inside-work-tree').toString().trim() ===
+      'true'
+    )
+  } catch {
+    return false
+  }
+}
 
-const currentBranch = execSync('git rev-parse --abbrev-ref HEAD')
-  .toString()
-  .trim()
+if (!isInGitRepo()) {
+  process.exit(1)
+} else {
+  const cleanUpLists = (s = '') =>
+    s
+      .split('\n')
+      .map((a) => a.trim())
+      .map((a) => a.replace(`${remoteName}/`, ''))
+      .filter((a) => !a.includes('->'))
 
-const remoteBranches = cleanUpLists(execSync('git branch -r').toString().trim())
+  const currentBranch = execSync('git rev-parse --abbrev-ref HEAD')
+    .toString()
+    .trim()
 
-const localBranches = cleanUpLists(
-  execSync('git branch').toString().trim().replace('* ', '')
-)
-
-export const uniq = (xs: Array<string>): Array<string> =>
-  xs.filter((v, i, s) => s.indexOf(v) === i)
-
-const allBranches = uniq(
-  // eslint-disable-next-line fp/no-mutating-methods
-  [...remoteBranches, ...localBranches].sort((a: string, b: string) =>
-    a.localeCompare(b)
+  const remoteBranches = cleanUpLists(
+    execSync('git branch -r').toString().trim()
   )
-)
 
-const onlyRemote = allBranches.filter((a: string) => !localBranches.includes(a))
-const onlyLocal = allBranches.filter((a: string) => !remoteBranches.includes(a))
-const onBoth = allBranches.filter(
-  (a: string) => remoteBranches.includes(a) && localBranches.includes(a)
-)
+  const localBranches = cleanUpLists(
+    execSync('git branch').toString().trim().replace('* ', '')
+  )
 
-const annotatedBranches = allBranches.map((a: string) => {
-  let branchString = `  ${a}`
-  if (a === currentBranch) {
-    branchString = `* ${a}`
-  }
-  if (onlyRemote.includes(a)) {
-    branchString = `${yellow}${branchString} (remote)${reset}`
-  }
-  if (onlyLocal.includes(a)) {
-    branchString = `${red}${branchString} (local)${reset}`
-  }
-  if (onBoth.includes(a)) {
-    branchString = `${green}${branchString} (both)${reset}`
-  }
+  const uniq = (xs: Array<string>): Array<string> =>
+    xs.filter((v, i, s) => s.indexOf(v) === i)
 
-  return branchString
-})
+  const allBranches = uniq(
+    // eslint-disable-next-line fp/no-mutating-methods
+    [...remoteBranches, ...localBranches].sort((a: string, b: string) =>
+      a.localeCompare(b)
+    )
+  )
 
-console.log(annotatedBranches.join('\n'))
+  const onlyRemote = allBranches.filter(
+    (a: string) => !localBranches.includes(a)
+  )
+  const onlyLocal = allBranches.filter(
+    (a: string) => !remoteBranches.includes(a)
+  )
+  const onBoth = allBranches.filter(
+    (a: string) => remoteBranches.includes(a) && localBranches.includes(a)
+  )
+
+  const annotatedBranches = allBranches.map((a: string) => {
+    let branchString = `  ${a}`
+    if (a === currentBranch) {
+      branchString = `* ${a}`
+    }
+    if (onlyRemote.includes(a)) {
+      branchString = `${yellow}${branchString} (remote)${reset}`
+    }
+    if (onlyLocal.includes(a)) {
+      branchString = `${red}${branchString} (local)${reset}`
+    }
+    if (onBoth.includes(a)) {
+      branchString = `${green}${branchString} (both)${reset}`
+    }
+
+    return branchString
+  })
+
+  console.log(annotatedBranches.join('\n'))
+}
