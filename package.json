@@ -11,7 +11,7 @@
     "type": "ko-fi",
     "url": "https://ko-fi.com/zacanger"
   },
-  "license": "LGPL-3.0",
+  "license": "MIT",
   "main": "index.js",
   "files": [
     "index.js",
@@ -34,7 +34,7 @@
     "git-branch"
   ],
   "devDependencies": {
-    "sortpack": "2.2.2",
+    "sortpack": "2.2.3",
     "standard": "17.0.0",
     "tap-spec": "5.0.0"
   },
