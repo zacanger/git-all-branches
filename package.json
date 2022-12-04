@@ -1,7 +1,7 @@
 {
   "name": "git-all-branches",
   "description": "Better git branch -a",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "author": {
     "email": "zac@zacanger.com",
     "name": "Zac Anger",
