@@ -30,7 +30,7 @@
     "git-branch"
   ],
   "devDependencies": {
-    "sortpack": "2.2.3",
+    "sortpack": "2.3.2",
     "standard": "17.0.0",
     "tap-spec": "5.0.0"
   },
