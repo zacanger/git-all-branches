@@ -1,5 +1,7 @@
 # git-all-branches
 
+[Donate](https://ko-fi.com/zacanger)
+
 Better `git branch -a`
 
 ![screenshot](/screenshot.png?raw=true)
