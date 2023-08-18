@@ -15,7 +15,7 @@
   ],
   "bin": "./index.js",
   "scripts": {
-    "preversion": "npm t",
+    "preversion": "sortpack && npm t",
     "test": "standard"
   },
   "homepage": "https://github.com/zacanger/git-all-branches#readme",
@@ -30,8 +30,8 @@
     "git-branch"
   ],
   "devDependencies": {
-    "sortpack": "2.3.2",
-    "standard": "17.0.0",
+    "sortpack": "2.3.4",
+    "standard": "17.1.0",
     "tap-spec": "5.0.0"
   },
   "engines": {

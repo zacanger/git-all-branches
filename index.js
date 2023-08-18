@@ -30,6 +30,12 @@ if (!isInGitRepo()) {
       .map((a) => a.replace(`${remoteName}/`, ''))
       .filter((a) => !a.includes('->'))
 
+  try {
+    execSync('git fetch --all')
+  } catch (e) {
+    console.error('Failed fetching, continuing with current local data', e)
+  }
+
   const currentBranch = execSync('git rev-parse --abbrev-ref HEAD')
     .toString()
     .trim()
