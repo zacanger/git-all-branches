@@ -4,10 +4,11 @@ const { execSync } = require('child_process')
 
 const remoteName = process.argv[2] || 'origin'
 
-const reset = '\u001b[0m'
-const green = '\u001b[0;32m'
-const yellow = '\u001b[0;33m'
-const red = '\u001b[0;31m'
+const useCol = process.stdout.isTTY
+const reset = useCol ? '\u001b[0m' : ''
+const green = useCol ? '\u001b[0;32m' : ''
+const yellow = useCol ? '\u001b[0;33m' : ''
+const red = useCol ? '\u001b[0;31m' : ''
 
 const isInGitRepo = () => {
   try {
